@@ -5,6 +5,64 @@
 	<link rel="stylesheet" href="styles.css">
 	<link rel="shortcut icon" href="title.png" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script>
+	function randpass(){
+		var x=document.getElementById("size");
+		var l=x.options[x.selectedIndex].value;
+		var cv="";
+		var str="";
+		var inp=document.getElementsByName("Include");
+		var b=inp.length;
+		for (var i = 0; i<b ; ++i) 
+		{
+			if(inp[i].checked){
+				cv=inp[i].value;
+			}
+			else{
+				continue;
+			}
+			if(cv==1){
+				str+="!@#$%^&*-+_=";
+				continue;
+			}
+			else if(cv==2){
+				str+="23456789";
+				console.log(str);
+				continue;
+			}
+			else if(cv==3){
+				str+="abcdefghjkmnpqrstuvwxyz";
+				continue;
+			}
+			else if(cv==4){
+				str+="ABCDEFGHJKMNPQRSTUVWXYZ";
+				continue;
+			}
+			else if(cv==5){
+				str+="iIlL1oO0";
+				continue;
+			}
+			else if(cv==6){
+				str+="`~(){}[]:',./?><";
+				continue;
+			}
+			else if(cv==8){
+				var sel=document.getElementById("npass");
+				npass.focus();
+				npass.select();
+				continue;
+			}
+
+		}
+		console.log(str);
+		function randomString(len, st) {
+		    var result = '';
+		    for (var i = len; i > 0; --i) result += st[Math.floor(Math.random() * st.length)];
+		    return result;
+		}
+		document.getElementById("npass").value=randomString(l,str);
+	}
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -15,10 +73,10 @@
 		</header>
 	<hr>
 	<br>
-		<form class="form form-group">
+		<form name="pass-form" class="form form-group">
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Password Length:</label>
-			 	<select class="col-xs-0 col-sm-0 col-md-0 col-lg-0">
+			 	<select class="col-xs-0 col-sm-0 col-md-0 col-lg-0" id=size>
 
 							<option value="" disabled class=sd>Weak</option>
 							<option value="6">6</option>
@@ -32,7 +90,7 @@
 							<option value="14">14</option>
 							<option value="15">15</option>
 							<option value="" disabled class=sd>Strong</option>
-							<option value="16">16</option>
+							<option value="16" selected>16</option>
 							<option value="17">17</option>
 							<option value="18">18</option>
 							<option value="19">19</option>		
@@ -154,39 +212,39 @@
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Include Symbols:</label>
-				<input type="checkbox" checked name="isymbols" value="isymbols" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. @#$%)
+				<input type="checkbox" checked name="Include" value="1" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. @#$%)
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Include Numbers:</label>
-				<input type="checkbox" checked name="inum" value="inum" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. 123456)
+				<input type="checkbox" checked name="Include" value="2" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. 123456)
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Include Lowercase Characters:</label>
-				<input type="checkbox" checked name="ilc" value="ilc" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. abcdefgh)
+				<input type="checkbox" checked name="Include" value="3" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. abcdefgh)
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Include Uppercase Characters:</label>
-				<input type="checkbox" checked name="iuc" value="iuc" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. ABCDEFGH)
+				<input type="checkbox" checked name="Include" value="4" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. ABCDEFGH)
 			</div>
 			<div class=row>
-				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Exclude Similar Characters:</label>
-				<input type="checkbox" checked name="isc" value="isc" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. i,l,1,L,o,0,O)
+				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Include Similar Characters:</label>
+				<input type="checkbox" checked name="Include" value="5" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. i,l,1,L,o,0,O)
 			</div>
 				<div class=row>
-				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Exclude Ambiguous Characters:</label>
-				<input type="checkbox" name="iac" value="iac" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. {}[]()/\'"`~,;:.<>)
+				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Include Ambiguous Characters:</label>
+				<input type="checkbox" name="Include" value="6" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. {}[]()/\'"`~,;:.<>)
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Generate On Your Device:</label>
-				<input type="checkbox" checked name="goyd" value="goyd" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (do NOT send across the internet)
+				<input type="checkbox" checked name="Include" value="7" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (do NOT send across the internet)
 			</div>
 				<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Auto-Select:</label>
-				<input type="checkbox" name="as" value="as" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (select the password automatically)
+				<input type="checkbox" name="Include" value="8" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (select the password automatically)
 			</div>
 				<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Save My Preference:</label>
-				<input type="checkbox" name="smp" value="smp" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. save all the settings above for later use)
+				<input type="checkbox" name="Include" value="9" class="col-xs-0 col-sm-0 col-md-0 col-lg-0"> (e.g. save all the settings above for later use)
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Load My Settings Anywhere:</label>
@@ -194,12 +252,12 @@
 			</div>
 			<br>
 			<div class=row>
-				<input type=button class="btn btn-default col-md-2 col-md-offset-3" value="Generate Password">
+				<input type=button class="btn btn-default col-md-2 col-md-offset-3" onclick="randpass()" value="Generate Password">
 			</div>
 			<br>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Your new password:</label>
-				<input type=text size="50" value="Your new password will appear here" readonly class="col-xs-7">
+				<input type=text size="50" id="npass" value="Your new password will appear here" readonly class="col-xs-7">
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Remember your password:</label>
