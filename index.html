@@ -27,7 +27,6 @@
 			}
 			else if(cv==2){
 				str+="23456789";
-				console.log(str);
 				continue;
 			}
 			else if(cv==3){
@@ -54,13 +53,130 @@
 			}
 
 		}
-		console.log(str);
 		function randomString(len, st) {
 		    var result = '';
 		    for (var i = len; i > 0; --i) result += st[Math.floor(Math.random() * st.length)];
 		    return result;
 		}
-		document.getElementById("npass").value=randomString(l,str);
+		var r=randomString(l,str);
+
+		function remember(r){
+			var s="";
+			for(var i=0;i<l;i++)
+			{
+				if(r[i]=='a'||r[i]=='A')
+				{
+					s+="Apple ";
+				}
+				else if(r[i]=='b'||r[i]=='B')
+				{
+					s+="Ball ";
+				}
+				else if(r[i]=='c'||r[i]=='C')
+				{
+					s+="Cat ";
+				}
+				else if(r[i]=='d'||r[i]=='D')
+				{
+					s+="Dog ";
+				}
+				else if(r[i]=='e'||r[i]=='E')
+				{
+					s+="Eat ";
+				}
+				else if(r[i]=='f'||r[i]=='F')
+				{
+					s+="Fly ";
+				}
+				else if(r[i]=='g'||r[i]=='G')
+				{
+					s+="Gun ";
+				}
+				else if(r[i]=='h'||r[i]=='H')
+				{
+					s+="Hen ";
+				}
+				else if(r[i]=='i'||r[i]=='I')
+				{
+					s+="Ink ";
+				}
+				else if(r[i]=='j'||r[i]=='J')
+				{
+					s+="Jug ";
+				}
+				else if(r[i]=='k'||r[i]=='K')
+				{
+					s+="King ";
+				}
+				else if(r[i]=='l'||r[i]=='L')
+				{
+					s+="Live ";
+				}
+				else if(r[i]=='m'||r[i]=='M')
+				{
+					s+="Man ";
+				}
+				else if(r[i]=='n'||r[i]=='N')
+				{
+					s+="New ";
+				}
+				else if(r[i]=='o'||r[i]=='O')
+				{
+					s+="Own ";
+				}
+				else if(r[i]=='p'||r[i]=='P')
+				{
+					s+="Pin ";
+				}
+				else if(r[i]=='q'||r[i]=='Q')
+				{
+					s+="Queen ";
+				}
+				else if(r[i]=='r'||r[i]=='R')
+				{
+					s+="Rat ";
+				}
+				else if(r[i]=='s'||r[i]=='S')
+				{
+					s+="Shy ";
+				}
+				else if(r[i]=='t'||r[i]=='T')
+				{
+					s+="Tin ";
+				}
+				else if(r[i]=='u'||r[i]=='U')
+				{
+					s+="Umbrella ";
+				}
+				else if(r[i]=='v'||r[i]=='V')
+				{
+					s+="Van ";
+				}
+				else if(r[i]=='w'||r[i]=='W')
+				{
+					s+="Watch ";
+				}
+				else if(r[i]=='x'||r[i]=='X')
+				{
+					s+="Xmas ";
+				}
+				else if(r[i]=='y'||r[i]=='Y')
+				{
+					s+="You ";
+				}
+				else if(r[i]=='z'||r[i]=='Z')
+				{
+					s+="Zebra ";
+				}
+				else
+				{
+					s+=(r[i]+" ");
+				}
+			}
+			return s;
+		}
+		document.getElementById("npass").value=r;
+		document.getElementById("remp").innerHTML=remember(r);
 	}
 	</script>
 </head>
@@ -261,7 +377,7 @@
 			</div>
 			<div class=row>
 				<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Remember your password:</label>
-				<p class="col-xs-7" style="padding-left: 0px;">Remember your password with the first character of each word in this sentence.</p>
+				<p class="col-xs-7" id="remp" style="padding-left: 0px;">Remember your password with the first character of each word in this sentence.</p>
 			</div>
 		</form>
 	</div>
