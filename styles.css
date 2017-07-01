@@ -1,0 +1,43 @@
+body
+{
+	background-color: #222222 !important;
+}
+header
+{
+	padding-left: 30px;
+}
+.container
+{
+	overflow: auto;
+	padding-top: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width:auto;
+	border-radius: 15px;
+	background-color: #fff;
+}
+.logo
+{
+	max-width: 65px;
+	min-width: 60px;
+	margin-top: 20px;
+}
+
+select, option
+{
+	width:120px;
+	text-align: right;
+}
+.sd
+{
+	background-color: #d2d2d2;
+}
+.form-group
+{
+	padding-left: 50px;
+}
+label
+{
+	margin: 5px;
+}
+
