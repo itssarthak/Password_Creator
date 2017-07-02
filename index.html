@@ -13,6 +13,7 @@
 		var str="";
 		var inp=document.getElementsByName("Include");
 		var b=inp.length;
+		var z=0;
 		for (var i = 0; i<b ; ++i) 
 		{
 			if(inp[i].checked){
@@ -46,13 +47,18 @@
 				continue;
 			}
 			else if(cv==8){
-				var sel=document.getElementById("npass");
-				npass.focus();
-				npass.select();
+				z=1;
+		
 				continue;
 			}
 
 		}
+		if(str=="")
+		{
+			r="Please Select atleast one option";
+		}
+		else
+		{
 		function randomString(len, st) {
 		    var result = '';
 		    for (var i = len; i > 0; --i) result += st[Math.floor(Math.random() * st.length)];
@@ -175,9 +181,17 @@
 			}
 			return s;
 		}
-		document.getElementById("npass").value=r;
+		
 		document.getElementById("remp").innerHTML=remember(r);
 	}
+	document.getElementById("npass").value=r;
+		if(z==1)
+		{
+				var sel=document.getElementById("npass");
+				sel.focus();
+				sel.select();
+		}
+}
 	</script>
 </head>
 <body>
